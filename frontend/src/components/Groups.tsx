@@ -20,7 +20,7 @@ interface GroupsProps {
   companiesGetAction: typeof companiesGetAction
 }
 
-const getColumns = (companies: Dictionary<string, Company>): Array<Column<Group>> => ([
+const getColumns = (companies: Dictionary<string, Company>): Column<Group>[] => ([
   {
     heading: 'Name',
     propertyName: 'name',

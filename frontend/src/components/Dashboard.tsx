@@ -1,3 +1,5 @@
+// tslint:disable jsx-no-lambda
+
 import React, { useEffect, useRef, useState } from 'react';
 import { AppState } from '../reducers';
 import Button from '@material-ui/core/Button';
@@ -67,7 +69,7 @@ const Dashboard: React.FC<DashboardProps> = ({ classes, token }) => {
         socketRef.current.close();
       }
     };
-  }, []);
+  }, [token]);
   return (
     <>
       <h1>Dashboard</h1>

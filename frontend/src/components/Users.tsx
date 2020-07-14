@@ -20,7 +20,7 @@ interface UsersProps {
   companiesGetAction: typeof companiesGetAction
 }
 
-const getColumns = (companies: Dictionary<string, Company>): Array<Column<User>> => ([
+const getColumns = (companies: Dictionary<string, Company>): Column<User>[] => ([
   {
     heading: 'First name',
     propertyName: 'firstName',

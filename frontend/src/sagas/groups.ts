@@ -1,7 +1,7 @@
 import { put, call, select, takeEvery } from 'redux-saga/effects';
 
 import { groupsGetRequestAction, groupsGetRequestFailAction, groupsGetRequestSuccessAction, groupsGetByIdRequestAction, groupsGetByIdRequestSuccessAction, groupsGetByIdRequestFailAction, groupsUpdateRequestAction, groupsUpdateRequestSuccessAction, groupsUpdateRequestFailAction } from '../actions/groups';
-import { GroupsGetAction, GROUPS_GET, GroupsGetByIdAction, GROUPS_GET_BY_ID, GroupsUpdateRequestFailAction, GroupsUpdateAction, GROUPS_UPDATE } from '../actions/groups/types';
+import { GroupsGetAction, GROUPS_GET, GroupsGetByIdAction, GROUPS_GET_BY_ID, GroupsUpdateAction, GROUPS_UPDATE } from '../actions/groups/types';
 import { AppState } from '../reducers';
 import { get, patch } from "../utils/fetch";
 
@@ -42,7 +42,7 @@ export function* updateGroup({ payload: { item } }: GroupsUpdateAction) {
   yield put(groupsUpdateRequestAction(item));
 
   try {
-    const result = yield call(patch, `/api/groups/${item._id}`, item);
+    yield call(patch, `/api/groups/${item._id}`, item);
     yield put(groupsUpdateRequestSuccessAction(item));
   } catch (error) {
     yield put(groupsUpdateRequestFailAction((error as Error).message));

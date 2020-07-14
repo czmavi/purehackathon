@@ -24,7 +24,7 @@ interface DevicesProps {
   companiesGetAction: typeof companiesGetAction
 }
 
-const getColumns = (groups: Dictionary<string, Group>, companies: Dictionary<string, Company>): Array<Column<Device>> => ([
+const getColumns = (groups: Dictionary<string, Group>, companies: Dictionary<string, Company>): Column<Device>[] => ([
   {
     heading: 'ID',
     propertyName: 'deviceId',
@@ -67,7 +67,7 @@ const Devices: React.FC<DevicesProps> = ({ fetching, pages, total, devicesGetAct
   useEffect(() => {
     groupsGetAction(0, 1000);
     companiesGetAction(0, 1000);
-  }, [groupsGetAction]);
+  }, [groupsGetAction, companiesGetAction]);
   return (
     <Table<Device>
       fetching={fetching}
